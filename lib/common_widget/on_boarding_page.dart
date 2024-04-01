@@ -19,7 +19,7 @@ class OnBoardingPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.asset(
-                    "assets/img/on_1.png",
+                    pObj["image"].toString(),
                     width: media.width, 
                     fit: BoxFit.fitWidth,
                   ),
@@ -29,7 +29,7 @@ class OnBoardingPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      "Track Your Goal", 
+                      pObj["title"].toString(),
                       style: TextStyle(
                         color: TColor.black, 
                         fontSize: 24, 
@@ -40,7 +40,7 @@ class OnBoardingPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 15),
                     child: Text(
-                      "Don't worry if you have trouble determining your goals, We can help you determine your goals and track your goals", 
+                      pObj["subtitle"].toString(), 
                       style: TextStyle(
                         color: TColor.gray, 
                         fontSize: 14),

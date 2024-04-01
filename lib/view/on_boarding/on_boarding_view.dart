@@ -11,7 +11,22 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
+  int selectPage = 0;
   PageController controller = PageController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    controller.addListener(() {
+      selectPage = controller.page?.round() ?? 0;
+
+      setState(() {
+        
+      });
+    });
+  }
 
   List pageArr = [
     {
@@ -44,6 +59,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     return Scaffold(
       backgroundColor: TColor.white,
       body: Stack(
+        alignment: Alignment.bottomRight,
         children: [
           PageView.builder(
             controller: controller,
@@ -52,7 +68,52 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               var pObj = pageArr[index] as Map? ?? {};
 
             return OnBoardingPage(pObj: pObj);
-          })
+          }),
+
+          SizedBox(
+            width: 120,
+            height: 120,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                  child: CircularProgressIndicator(
+                    color: TColor.primaryColor1,
+                    value: selectPage / 4,
+                    strokeWidth: 2,
+                  ),
+                ),
+
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(color: TColor.primaryColor1, borderRadius: BorderRadius.circular(35)),
+                  child: IconButton(icon: Icon(Icons.navigate_next, color: TColor.white,), onPressed: (){
+                
+                    if(selectPage < 3){
+                
+                      selectPage = selectPage + 1;
+                
+                      controller.jumpToPage(selectPage);
+
+                      setState(() {
+                        
+                      });
+                
+                    }else{
+                      //Open welcome screen
+                      print("Open Welcome Screen");
+                
+                    }
+                  },),
+                ),
+              ],
+            ),
+          )
         ],
       ) ,
     );
