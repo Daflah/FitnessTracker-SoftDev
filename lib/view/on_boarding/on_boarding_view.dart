@@ -82,7 +82,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                   height: 70,
                   child: CircularProgressIndicator(
                     color: TColor.primaryColor1,
-                    value: selectPage / 4,
+                    value: (selectPage + 1) / 4,
                     strokeWidth: 2,
                   ),
                 ),
@@ -97,7 +97,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     if(selectPage < 3){
                 
                       selectPage = selectPage + 1;
-                
+
                       controller.jumpToPage(selectPage);
 
                       setState(() {
