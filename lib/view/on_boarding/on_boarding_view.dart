@@ -1,6 +1,7 @@
 
 import 'package:fitness_tracker/common/colo_extension.dart';
 import 'package:fitness_tracker/common_widget/on_boarding_page.dart';
+import 'package:fitness_tracker/view/login/signup_view.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -98,7 +99,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 
                       selectPage = selectPage + 1;
 
-                      controller.jumpToPage(selectPage);
+                      controller.animateToPage(selectPage, duration: const Duration(milliseconds: 600), curve: Curves.bounceInOut);
+                      // controller.jumpToPage(selectPage);
 
                       setState(() {
                         
@@ -107,6 +109,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                     }else{
                       //Open welcome screen
                       print("Open Welcome Screen");
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpView() ));
                 
                     }
                   },),

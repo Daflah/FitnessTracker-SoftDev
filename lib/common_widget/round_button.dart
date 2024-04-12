@@ -7,7 +7,11 @@ class RoundButton extends StatelessWidget {
   final String title;
   final RoundButtonType type;
   final VoidCallback onPressed;
-  const RoundButton({super.key, required this.title, this.type = RoundButtonType.textGradient, required this.onPressed});
+  const RoundButton(
+    {super.key, 
+    required this.title, 
+    this.type = RoundButtonType.bgGradient, 
+    required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class RoundButton extends StatelessWidget {
           color: type ==  RoundButtonType.bgGradient ? Colors.transparent : TColor.white,
           child: type ==  RoundButtonType.bgGradient ?  Text(title,
               style: TextStyle(
-                color: TColor.primaryColor1,
+                color: TColor.white,
                 fontSize: 18,
                 fontWeight: FontWeight.w700))
             : ShaderMask(

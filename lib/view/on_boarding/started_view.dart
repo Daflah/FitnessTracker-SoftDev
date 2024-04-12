@@ -1,5 +1,6 @@
 import 'package:fitness_tracker/common/colo_extension.dart';
 import 'package:fitness_tracker/common_widget/round_button.dart';
+import 'package:fitness_tracker/view/on_boarding/on_boarding_view.dart';
 import 'package:flutter/material.dart';
 
 class StartedView extends StatefulWidget {
@@ -21,10 +22,10 @@ class _StartedViewState extends State<StartedView> {
       body: Container(
         width: media.width,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
+          gradient: isChangeColor ? LinearGradient(
             colors: TColor.primaryG, 
             begin: Alignment.topLeft, 
-            end: Alignment.bottomRight),
+            end: Alignment.bottomRight): null,
         ),
         child: 
             Column(
@@ -55,10 +56,26 @@ class _StartedViewState extends State<StartedView> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: RoundButton(
-                    title: "Get Started", 
+                    title: "Get Started",
+                    type: isChangeColor 
+                    ? RoundButtonType.textGradient 
+                    : RoundButtonType.bgGradient,
                     onPressed: (){
 
-                },),
+                      if(isChangeColor){
+                        //Go Next Screen
+                        Navigator.push(
+                          context, 
+                          MaterialPageRoute(
+                            builder: (context) => const OnBoardingView()));
+                      }else{
+                        //Change Color
+                        setState(() {
+                          isChangeColor = true;
+                        });
+                      }
+                },
+                ),
               ),
             ),
           ],
