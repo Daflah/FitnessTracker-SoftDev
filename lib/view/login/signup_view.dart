@@ -109,11 +109,11 @@ class _SignUpViewState extends State<SignUpView> {
 
                     Padding(
                       padding: const EdgeInsets.only(top: 8),
-                      child: Expanded(child: Text(
+                      child: Text(
                           "By continuing you accept our Privacy Policy and\nTerm of Use", 
                           style: TextStyle(color: TColor.gray, fontSize: 10),
                         ),
-                      ),
+                      
                     )
                   ],
                 ),

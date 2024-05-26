@@ -78,19 +78,18 @@ class _LoginViewState extends State<LoginView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8),
-                      child: Expanded(child: Text(
+                       Text(
                           "Forgot your password?", 
                           style: TextStyle(color: TColor.gray, fontSize: 10, decoration: TextDecoration.underline),
                         ),
-                      ),
-                    )
+    
                   ],
                 ),
 
-                Spacer(),
+                // SizedBox(
+                //   height: media.width * 0.8,
+                // ),
+                const Spacer(),
 
                 RoundButton(title: "Login", onPressed: () {
                   Navigator.push(
