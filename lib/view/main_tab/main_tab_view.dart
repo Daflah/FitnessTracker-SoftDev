@@ -1,6 +1,8 @@
 
 import 'package:fitness_tracker/common/colo_extension.dart';
 import 'package:fitness_tracker/common_widget/tab_button.dart';
+import 'package:fitness_tracker/view/home/blank_view.dart';
+import 'package:fitness_tracker/view/home/home_view.dart';
 import 'package:flutter/material.dart';
 
 class MainTabView extends StatefulWidget {
@@ -12,10 +14,13 @@ class MainTabView extends StatefulWidget {
 
 class _MainTabViewState extends State<MainTabView> {
   int selectTab = 0;
+  final PageStorageBucket pageBucket = PageStorageBucket(); 
+  Widget currentTab = const HomeView();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: TColor.white,
+      body: PageStorage(bucket: pageBucket, child: currentTab),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
         width: 70, 
@@ -55,6 +60,7 @@ class _MainTabViewState extends State<MainTabView> {
                   isActive: selectTab == 0, 
                   onTap: () { 
                     selectTab = 0;
+                    currentTab = const HomeView();
                     if(mounted){
                       setState(() {});
                     }
@@ -66,6 +72,7 @@ class _MainTabViewState extends State<MainTabView> {
                   isActive: selectTab == 1, 
                   onTap: () {
                       selectTab = 1;
+                      currentTab = const BlankView();
                       if(mounted){
                         setState(() {});
                       }
@@ -81,6 +88,7 @@ class _MainTabViewState extends State<MainTabView> {
                   isActive: selectTab == 2, 
                   onTap: () {
                       selectTab = 2;
+                      currentTab = const BlankView();
                       if(mounted){
                         setState(() {});
                       }
@@ -92,6 +100,7 @@ class _MainTabViewState extends State<MainTabView> {
                   isActive: selectTab == 3, 
                   onTap: () {
                       selectTab = 3;
+                      currentTab = const BlankView();
                       if(mounted){
                         setState(() {});
                       }
